@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linus Power Solutions - 24/7 Solar Power for Homes & Businesses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.28.0/icon-font.min.css">
+    <style>
+        :root {
+            --primary-dark: #4A1D96;
+            --primary-main: #7C3AED;
+            --primary-light: #8B5CF6;
+            --primary-ultralight: #F3F0FF;
+            --accent: #F59E0B;
+            --neutral-900: #1F2937;
+            --neutral-700: #374151;
+            --neutral-500: #6B7280;
+            --neutral-300: #D1D5DB;
+            --neutral-100: #F3F4F6;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
+            --shadow-hover: 0 8px 24px rgba(124, 58, 237, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--neutral-900);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neutral-700);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-main);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-main);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-main);
+            cursor: pointer;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-main), var(--primary-dark));
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-main));
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-ultralight) 0%, var(--white) 100%);
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.75rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--neutral-700);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: fadeInRight 0.8s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--primary-main);
+            border: 2px solid var(--primary-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .secondary-button:hover {
+            background: var(--primary-main);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .trust-indicator {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            color: var(--neutral-700);
+            font-size: 0.9rem;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            background: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Benefits Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--neutral-700);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid var(--primary-ultralight);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .benefit-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-light);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-ultralight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-main);
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            background: var(--primary-main);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        /* Image Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+
+        /* Social Proof */
+        .social-proof {
+            background: var(--primary-ultralight);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .result-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .testimonial {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin: 2rem auto;
+            max-width: 700px;
+            position: relative;
+            border-left: 4px solid var(--primary-main);
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-ultralight);
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            line-height: 1;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .client-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-ultralight);
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            counter-reset: step;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .process-step::before {
+            counter-increment: step;
+            content: counter(step);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-main), var(--primary-dark));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .process-image {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin: 1rem auto;
+            display: block;
+            box-shadow: var(--shadow);
+        }
+
+        /* Guarantee Section */
+        .guarantee {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guarantee::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .guarantee-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .guarantee h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .guarantee-badge {
+            background: var(--accent);
+            color: var(--neutral-900);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-ultralight) 0%, var(--white) 100%);
+            position: relative;
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 800;
+        }
+
+        .final-cta p {
+            font-size: 1.125rem;
+            color: var(--neutral-700);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-options {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--neutral-900);
+            color: var(--neutral-300);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--neutral-300);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--neutral-700);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-main);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--neutral-700);
+            color: var(--neutral-500);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-hover);
+                border-top: 1px solid var(--primary-ultralight);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .contact-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .trust-badges {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+            }
+
+            .benefit-card, .process-step {
+                padding: 1.5rem;
+            }
+
+            .testimonial {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Lazy loading */
+        .lazy-img {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lazy-img.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="lucide lucide-battery-charging logo-icon"></i>
+                Linus<span>Power</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="lucide lucide-menu"></i>
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                <a href="tel:+234800000000" class="secondary-button">
+                    <i class="lucide lucide-phone"></i> Call Now
+                </a>
+                <a href="contact.html" class="cta-button">
+                    <i class="lucide lucide-calendar"></i> Free Assessment
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Get 24/7 Stable Power & Slash Your Electricity Bills</h1>
+                    <p class="hero-subtitle">Professional solar power solutions for Nigerian homeowners and businesses tired of blackouts and skyrocketing electricity costs. Transform your power situation today.</p>
+                    <div class="hero-cta">
+                        <a href="contact.html" class="cta-button">
+                            <i class="lucide lucide-zap"></i> Get Free Assessment
+                        </a>
+                        <a href="services.html" class="secondary-button">
+                            <i class="lucide lucide-chart-bar"></i> Our Services
+                        </a>
+                    </div>
+                    <div class="trust-indicator">
+                        <span>Trusted by 100+ clients:</span>
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <i class="lucide lucide-home"></i> Homeowners
+                            </div>
+                            <div class="trust-badge">
+                                <i class="lucide lucide-building"></i> Businesses
+                            </div>
+                            <div class="trust-badge">
+                                <i class="lucide lucide-star"></i> 5-Star Rated
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img 
+                        src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Modern solar panel installation on a beautiful home" 
+                        class="hero-img lazy-img"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" id="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Choose Linus Power?</h2>
+            <p class="section-subtitle">Experience the freedom of reliable, affordable solar power with these key benefits</p>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="lucide lucide-zap"></i>
+                    </div>
+                    <h3>Eliminate Power Bills</h3>
+                    <p>Dramatically reduce or completely eliminate your monthly electricity expenses with our custom solar solutions designed for Nigerian homes and businesses.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="lucide lucide-shield-check"></i>
+                    </div>
+                    <h3>24/7 Uninterrupted Power</h3>
+                    <p>No more blackouts, no more generator noise and fuel costs. Pure, clean power running your home or business seamlessly day and night.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="lucide lucide-trending-up"></i>
+                    </div>
+                    <h3>Increase Property Value</h3>
+                    <p>Solar installations increase your property value by up to 20% while protecting you from rising energy costs and grid instability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Transforming Nigerian Homes & Businesses</h2>
+            <p class="section-subtitle">See our solar installations powering homes and businesses across Nigeria</p>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1621370263363-c59bce7c3bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                        alt="Solar installation on residential roof in Lagos" 
+                        class="gallery-img lazy-img"
+                    >
+                </div>
+                <div class="gallery-item fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1551258102-80d97a1b9df3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                        alt="Commercial solar installation for business" 
+                        class="gallery-img lazy-img"
+                    >
+                </div>
+                <div class="gallery-item fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1569163139394-de44cb54d5ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                        alt="Solar battery storage system installation" 
+                        class="gallery-img lazy-img"
+                    >
+                </div>
+                <div class="gallery-item fade-in">
+                    <img 
+                        src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                        alt="Happy Nigerian family with solar installation" 
+                        class="gallery-img lazy-img"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="section social-proof" id="results">
+        <div class="container">
+            <h2 class="section-title">Real Results for Real Nigerian Clients</h2>
+            <p class="section-subtitle">Join hundreds of satisfied customers who have transformed their power situation</p>
+            
+            <div class="results-grid">
+                <div class="result-card fade-in">
+                    <div class="result-number">80%</div>
+                    <p>Average reduction in electricity costs</p>
+                </div>
+                <div class="result-card fade-in">
+                    <div class="result-number">24/7</div>
+                    <p>Stable power for homes and businesses</p>
+                </div>
+                <div class="result-card fade-in">
+                    <div class="result-number">3-5 Years</div>
+                    <p>Typical return on investment period</p>
+                </div>
+                <div class="result-card fade-in">
+                    <div class="result-number">100+</div>
+                    <p>Happy clients across Nigeria</p>
+                </div>
+            </div>
+
+            <div class="testimonial fade-in">
+                <p>"After struggling with generator costs that were eating into our profits, Linus Power installed a solar system that now powers our entire hospital in Abuja. We've eliminated our ₦280,000 monthly generator fuel bill and can focus on patient care without power interruptions. This has been life-changing for our medical practice."</p>
+                <div class="testimonial-author">
+                    <img 
+                        src="https://images.unsplash.com/photo-1551836026-d5c8c2a7d7d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                        alt="Dr. Adebayo" 
+                        class="client-image lazy-img"
+                    >
+                    <div>
+                        <strong>Dr. Adebayo</strong>
+                        <div>Hospital Administrator, Abuja</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" id="process">
+        <div class="container">
+            <h2 class="section-title">Simple 3-Step Process to Power Freedom</h2>
+            <p class="section-subtitle">From consultation to installation, we make going solar simple and stress-free</p>
+            
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <h3>Free Power Assessment</h3>
+                    <p>We visit your property, analyze your energy needs, and provide a custom solution with clear, transparent pricing.</p>
+                    <img 
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                        alt="Energy assessment consultation" 
+                        class="process-image lazy-img"
+                    >
+                </div>
+                <div class="process-step fade-in">
+                    <h3>Professional Installation</h3>
+                    <p>Our certified Nigerian team installs your system quickly and efficiently with minimal disruption to your daily activities.</p>
+                    <img 
+                        src="https://images.unsplash.com/photo-1621370263363-c59bce7c3bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                        alt="Professional solar installation" 
+                        class="process-image lazy-img"
+                    >
+                </div>
+                <div class="process-step fade-in">
+                    <h3>Enjoy Unlimited Power</h3>
+                    <p>Start saving immediately with 24/7 reliable power, ongoing support, and maintenance from our local team.</p>
+                    <img 
+                        src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                        alt="Happy family enjoying solar power" 
+                        class="process-image lazy-img"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="section">
+        <div class="container">
+            <div class="guarantee fade-in">
+                <div class="guarantee-content">
+                    <div class="guarantee-badge">
+                        <i class="lucide lucide-award"></i> 10-Year Warranty
+                    </div>
+                    <h2>10-Year Performance Guarantee</h2>
+                    <p>We're so confident in our solar systems that we back them with a comprehensive 10-year warranty on equipment and performance. Your investment is fully protected with Linus Power Solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="consultation">
+        <div class="container">
+            <div class="final-cta-content">
+                <h2>Ready to End Power Problems Forever?</h2>
+                <p>Stop overpaying for unreliable power. Get your custom solar solution and start saving today with a free, no-obligation assessment.</p>
+                <div class="contact-options">
+                    <a href="tel:+234800000000" class="cta-button">
+                        <i class="lucide lucide-phone"></i> Call Now: 0800-LINUS-POWER
+                    </a>
+                    <a href="contact.html" class="secondary-button">
+                        <i class="lucide lucide-mail"></i> Get Free Quote
+                    </a>
+                    <a href="https://wa.me/234800000000" class="secondary-button">
+                        <i class="lucide lucide-message-circle"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Linus Power Solutions</h3>
+                    <p>From the trusted team at Linus Security Company. Providing reliable solar power solutions for Nigerian homes and businesses since 2020.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="lucide lucide-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="lucide lucide-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="lucide lucide-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="lucide lucide-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="lucide lucide-home"></i> Home</a></li>
+                        <li><a href="services.html"><i class="lucide lucide-settings"></i> Services</a></li>
+                        <li><a href="blog.html"><i class="lucide lucide-file-text"></i> Blog</a></li>
+                        <li><a href="contact.html"><i class="lucide lucide-phone"></i> Contact</a></li>
+                        <li><a href="contact.html"><i class="lucide lucide-calendar"></i> Free Assessment</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+234800000000"><i class="lucide lucide-phone"></i> 0800-LINUS-POWER</a></li>
+                        <li><a href="mailto:power@linus.com"><i class="lucide lucide-mail"></i> power@linus.com</a></li>
+                        <li><a href="#"><i class="lucide lucide-map-pin"></i> Lagos, Nigeria</a></li>
+                        <li><a href="#"><i class="lucide lucide-clock"></i> Mon-Sat: 8AM-6PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Linus Power Solutions. All rights reserved. | From the trusted Linus Security Company family</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.className = 'lucide lucide-x';
+            } else {
+                icon.className = 'lucide lucide-menu';
+            }
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.querySelector('i').className = 'lucide lucide-menu';
+            });
+        });
+
+        // Intersection Observer for animations and lazy loading
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Lazy load images
+                    if (entry.target.classList.contains('lazy-img')) {
+                        const src = entry.target.getAttribute('src');
+                        if (src) {
+                            entry.target.src = src;
+                            entry.target.classList.add('loaded');
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations and lazy loading
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe all animated elements
+            const animatedElements = document.querySelectorAll('.fade-in, .lazy-img');
+            animatedElements.forEach(el => observer.observe(el));
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Button hover effects
+            const buttons = document.querySelectorAll('.cta-button, .secondary-button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Preload critical images
+            const criticalImages = [
+                'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            ];
+            
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Energy Blog - Linus Power Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.28.0/icon-font.min.css">
+    <style>
+        :root {
+            --primary-dark: #4A1D96;
+            --primary-main: #7C3AED;
+            --primary-light: #8B5CF6;
+            --primary-ultralight: #F3F0FF;
+            --accent: #F59E0B;
+            --neutral-900: #1F2937;
+            --neutral-700: #374151;
+            --neutral-500: #6B7280;
+            --neutral-300: #D1D5DB;
+            --neutral-100: #F3F4F6;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
+            --shadow-hover: 0 8px 24px rgba(124, 58, 237, 0.12);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--neutral-900);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neutral-700);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-main);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-main);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-main);
+            cursor: pointer;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-main), var(--primary-dark));
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-main));
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--primary-main);
+            border: 2px solid var(--primary-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .secondary-button:hover {
+            background: var(--primary-main);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-ultralight) 0%, var(--white) 100%);
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--neutral-700);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Blog Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--neutral-700);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--primary-ultralight);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .blog-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-light);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--neutral-500);
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .blog-category {
+            background: var(--primary-ultralight);
+            color: var(--primary-main);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--neutral-700);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--primary-main);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--primary-dark);
+            gap: 0.75rem;
+        }
+
+        /* Featured Post */
+        .featured-post {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-hover);
+            margin-bottom: 3rem;
+            overflow: hidden;
+            border: 2px solid var(--primary-main);
+        }
+
+        .featured-content {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .featured-badge {
+            background: var(--accent);
+            color: var(--neutral-900);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .featured-content h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            font-weight: 800;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .newsletter p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        /* Categories Section */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .category-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            background: var(--primary-ultralight);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-ultralight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--primary-main);
+            font-size: 1.5rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .pagination a {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--primary-ultralight);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--neutral-700);
+            transition: var(--transition);
+        }
+
+        .pagination a:hover, .pagination a.active {
+            background: var(--primary-main);
+            color: var(--white);
+            border-color: var(--primary-main);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--neutral-900);
+            color: var(--neutral-300);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--neutral-300);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--neutral-700);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-main);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--neutral-700);
+            color: var(--neutral-500);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-hover);
+                border-top: 1px solid var(--primary-ultralight);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .page-header {
+                padding: 120px 0 60px;
+            }
+
+            .blog-card, .featured-content {
+                padding: 1rem;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="lucide lucide-battery-charging logo-icon"></i>
+                Linus<span>Power</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="lucide lucide-menu"></i>
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="blog.html" style="color: var(--primary-main);">Blog</a>
+                <a href="contact.html">Contact</a>
+                <a href="tel:+234800000000" class="secondary-button">
+                    <i class="lucide lucide-phone"></i> Call Now
+                </a>
+                <a href="contact.html" class="cta-button">
+                    <i class="lucide lucide-calendar"></i> Free Assessment
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Solar Energy Blog</h1>
+            <p>Expert insights, tips, and news about solar power in Nigeria. Stay informed about the latest in renewable energy.</p>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Browse by Category</h2>
+            <div class="categories-grid">
+                <a href="#" class="category-card fade-in" data-category="all">
+                    <div class="category-icon">
+                        <i class="lucide lucide-grid"></i>
+                    </div>
+                    <h3>All Posts</h3>
+                    <p>Complete collection</p>
+                </a>
+                <a href="#" class="category-card fade-in" data-category="residential">
+                    <div class="category-icon">
+                        <i class="lucide lucide-home"></i>
+                    </div>
+                    <h3>Residential Solar</h3>
+                    <p>Home solutions & tips</p>
+                </a>
+                <a href="#" class="category-card fade-in" data-category="commercial">
+                    <div class="category-icon">
+                        <i class="lucide lucide-building"></i>
+                    </div>
+                    <h3>Commercial Solar</h3>
+                    <p>Business applications</p>
+                </a>
+                <a href="#" class="category-card fade-in" data-category="finance">
+                    <div class="category-icon">
+                        <i class="lucide lucide-trending-up"></i>
+                    </div>
+                    <h3>Cost & Savings</h3>
+                    <p>ROI & financial benefits</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Post Section -->
+    <section class="section">
+        <div class="container">
+            <div id="featuredPostContainer">
+                <!-- Featured post will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <p class="section-subtitle">Stay updated with the latest in solar technology and energy solutions</p>
+            
+            <div id="blogPostsContainer" class="blog-grid">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="paginationContainer">
+                <!-- Pagination will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section">
+        <div class="container">
+            <div class="newsletter fade-in">
+                <h2>Stay Updated with Solar News</h2>
+                <p>Subscribe to our newsletter for the latest solar energy insights, tips, and exclusive offers.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
+                    <button type="submit" class="cta-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Linus Power Solutions</h3>
+                    <p>From the trusted team at Linus Security Company. Providing reliable solar power solutions for Nigerian homes and businesses since 2020.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="lucide lucide-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="lucide lucide-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="lucide lucide-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="lucide lucide-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="lucide lucide-home"></i> Home</a></li>
+                        <li><a href="services.html"><i class="lucide lucide-settings"></i> Services</a></li>
+                        <li><a href="blog.html"><i class="lucide lucide-file-text"></i> Blog</a></li>
+                        <li><a href="contact.html"><i class="lucide lucide-phone"></i> Contact</a></li>
+                        <li><a href="contact.html"><i class="lucide lucide-calendar"></i> Free Assessment</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+234800000000"><i class="lucide lucide-phone"></i> 0800-LINUS-POWER</a></li>
+                        <li><a href="mailto:power@linus.com"><i class="lucide lucide-mail"></i> power@linus.com</a></li>
+                        <li><a href="#"><i class="lucide lucide-map-pin"></i> Lagos, Nigeria</a></li>
+                        <li><a href="#"><i class="lucide lucide-clock"></i> Mon-Sat: 8AM-6PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Linus Power Solutions. All rights reserved. | From the trusted Linus Security Company family</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // =============================================
+        // BLOG POSTS DATA - EASILY UPDATE THIS SECTION
+        // =============================================
+        const blogPosts = [
+            {
+                id: 1,
+                title: "How Solar Power Can Save Nigerian Homes ₦500,000 Annually",
+                excerpt: "Discover how Nigerian homeowners are dramatically reducing their electricity bills and eliminating generator costs with smart solar solutions. Real case studies and cost breakdowns included.",
+                category: "residential",
+                image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                date: "2024-03-15",
+                readTime: "5 min read",
+                featured: true,
+                content: "Full article content would go here... This is a comprehensive guide showing real savings calculations for Nigerian homeowners."
+            },
+            {
+                id: 2,
+                title: "5 Essential Solar System Maintenance Tips for Nigerian Climate",
+                excerpt: "Learn how to maintain your solar system in Nigeria's unique climate conditions to ensure optimal performance and longevity.",
+                category: "residential",
+                image: "https://images.unsplash.com/photo-1621370263363-c59bce7c3bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                date: "2024-03-12",
+                readTime: "4 min read",
+                featured: false,
+                content: "Detailed maintenance guide covering cleaning, inspection, and seasonal care for solar systems in Nigeria."
+            },
+            {
+                id: 3,
+                title: "Why Nigerian Businesses Are Switching to Solar: Cost Analysis",
+                excerpt: "Discover the financial benefits driving Nigerian businesses to adopt solar power, with real ROI calculations and case studies.",
+                category: "commercial",
+                image: "https://images.unsplash.com/photo-1551258102-80d97a1b9df3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                date: "2024-03-08",
+                readTime: "6 min read",
+                featured: false,
+                content: "Business-focused analysis showing ROI timelines and operational cost savings for Nigerian enterprises."
+            },
+            {
+                id: 4,
+                title: "Latest Battery Technologies for Solar Systems in 2024",
+                excerpt: "Explore the newest battery technologies that are revolutionizing solar energy storage and making it more affordable for Nigerians.",
+                category: "technology",
+                image: "https://images.unsplash.com/photo-1569163139394-de44cb54d5ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                date: "2024-03-05",
+                readTime: "5 min read",
+                featured: false,
+                content: "Overview of lithium-ion, lead-acid, and emerging battery technologies for solar applications."
+            },
+            {
+                id: 5,
+                title: "Calculating Your Solar ROI: A Nigerian Homeowner's Guide",
+                excerpt: "Learn how to calculate the return on investment for your solar system and understand when you'll start seeing savings.",
+                category: "finance",
+                image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                date: "2024-03-01",
+                readTime: "7 min read",
+                featured: false,
+                content: "Step-by-step guide to calculating solar ROI with Nigerian-specific cost and savings data."
+            },
+            {
+                id: 6,
+                title: "Government Incentives for Solar Power in Nigeria: 2024 Update",
+                excerpt: "Stay informed about the latest government policies and incentives supporting solar energy adoption in Nigeria.",
+                category: "policy",
+                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                date: "2024-02-25",
+                readTime: "4 min read",
+                featured: false,
+                content: "Updated information on tax incentives, grants, and government programs for solar energy."
+            }
+        ];
+
+        // =============================================
+        // BLOG MANAGEMENT FUNCTIONS
+        // =============================================
+
+        // Configuration
+        const POSTS_PER_PAGE = 6;
+        let currentPage = 1;
+        let currentCategory = 'all';
+
+        // Display featured post
+        function displayFeaturedPost() {
+            const featuredPost = blogPosts.find(post => post.featured);
+            if (!featuredPost) return;
+
+            const featuredContainer = document.getElementById('featuredPostContainer');
+            featuredContainer.innerHTML = `
+                <div class="featured-post fade-in">
+                    <div class="featured-content">
+                        <div>
+                            <span class="featured-badge">FEATURED</span>
+                            <h2>${featuredPost.title}</h2>
+                            <p class="blog-meta">
+                                <span><i class="lucide lucide-calendar"></i> ${formatDate(featuredPost.date)}</span>
+                                <span><i class="lucide lucide-clock"></i> ${featuredPost.readTime}</span>
+                            </p>
+                            <p class="blog-excerpt">${featuredPost.excerpt}</p>
+                            <a href="#" class="read-more" data-post-id="${featuredPost.id}">
+                                Read Full Article <i class="lucide lucide-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <img src="${featuredPost.image}" alt="${featuredPost.title}" class="featured-image">
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Display blog posts with pagination
+        function displayBlogPosts(page = 1, category = 'all') {
+            const container = document.getElementById('blogPostsContainer');
+            const paginationContainer = document.getElementById('paginationContainer');
+            
+            // Filter posts by category
+            let filteredPosts = blogPosts.filter(post => 
+                category === 'all' || post.category === category
+            );
+            
+            // Remove featured post from regular listing
+            filteredPosts = filteredPosts.filter(post => !post.featured);
+            
+            // Calculate pagination
+            const totalPosts = filteredPosts.length;
+            const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+            const startIndex = (page - 1) * POSTS_PER_PAGE;
+            const paginatedPosts = filteredPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+            
+            // Clear container
+            container.innerHTML = '';
+            
+            // Display posts
+            paginatedPosts.forEach(post => {
+                const postElement = document.createElement('article');
+                postElement.className = 'blog-card fade-in';
+                postElement.innerHTML = `
+                    <img src="${post.image}" alt="${post.title}" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">${formatCategory(post.category)}</span>
+                        <h3>${post.title}</h3>
+                        <p class="blog-meta">
+                            <span><i class="lucide lucide-calendar"></i> ${formatDate(post.date)}</span>
+                            <span><i class="lucide lucide-clock"></i> ${post.readTime}</span>
+                        </p>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        <a href="#" class="read-more" data-post-id="${post.id}">
+                            Read More <i class="lucide lucide-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+                container.appendChild(postElement);
+            });
+            
+            // Display pagination
+            displayPagination(totalPages, page, category);
+            
+            // Initialize animations
+            initializeAnimations();
+        }
+
+        // Display pagination controls
+        function displayPagination(totalPages, currentPage, category) {
+            const container = document.getElementById('paginationContainer');
+            
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            // Previous button
+            if (currentPage > 1) {
+                paginationHTML += `<a href="#" class="pagination-prev" data-page="${currentPage - 1}" data-category="${category}">Previous</a>`;
+            }
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationHTML += `<a href="#" class="active" data-page="${i}" data-category="${category}">${i}</a>`;
+                } else {
+                    paginationHTML += `<a href="#" data-page="${i}" data-category="${category}">${i}</a>`;
+                }
+            }
+            
+            // Next button
+            if (currentPage < totalPages) {
+                paginationHTML += `<a href="#" class="pagination-next" data-page="${currentPage + 1}" data-category="${category}">Next</a>`;
+            }
+            
+            container.innerHTML = paginationHTML;
+        }
+
+        // Format category for display
+        function formatCategory(category) {
+            const categories = {
+                'residential': 'Residential Solar',
+                'commercial': 'Commercial Solar',
+                'finance': 'Cost & Savings',
+                'technology': 'Technology',
+                'policy': 'Policy',
+                'maintenance': 'Maintenance'
+            };
+            return categories[category] || category;
+        }
+
+        // Format date for display
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Initialize animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        }
+
+        // =============================================
+        // EVENT LISTENERS AND INITIALIZATION
+        // =============================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize blog display
+            displayFeaturedPost();
+            displayBlogPosts();
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.className = 'lucide lucide-x';
+                } else {
+                    icon.className = 'lucide lucide-menu';
+                }
+            });
+
+            // Category filtering
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.getAttribute('data-category');
+                    currentCategory = category;
+                    currentPage = 1;
+                    displayBlogPosts(currentPage, category);
+                    
+                    // Update active state
+                    document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Pagination
+            document.getElementById('paginationContainer').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (e.target.tagName === 'A') {
+                    const page = parseInt(e.target.getAttribute('data-page'));
+                    const category = e.target.getAttribute('data-category') || 'all';
+                    currentPage = page;
+                    currentCategory = category;
+                    displayBlogPosts(page, category);
+                    
+                    // Scroll to top of blog section
+                    document.getElementById('blogPostsContainer').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+
+            // Read more links (could be expanded to show full articles)
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('read-more') || e.target.closest('.read-more')) {
+                    e.preventDefault();
+                    const readMoreLink = e.target.classList.contains('read-more') ? e.target : e.target.closest('.read-more');
+                    const postId = readMoreLink.getAttribute('data-post-id');
+                    
+                    // For now, just show an alert. In a real implementation, this would show the full article.
+                    const post = blogPosts.find(p => p.id == postId);
+                    if (post) {
+                        alert(`Showing full article: ${post.title}\n\nThis would display the complete article content in a real implementation.`);
+                    }
+                }
+            });
+
+            // Newsletter form
+            document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                const button = this.querySelector('button');
+                
+                const originalText = button.textContent;
+                button.textContent = 'Subscribing...';
+                button.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    button.textContent = 'Subscribed!';
+                    button.style.background = 'var(--primary-main)';
+                    alert('Thank you for subscribing to our newsletter!');
+                    this.reset();
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.disabled = false;
+                        button.style.background = '';
+                    }, 3000);
+                }, 1500);
+            });
+
+            // Close mobile menu when clicking on links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').className = 'lucide lucide-menu';
+                });
+            });
+        });
+
+        // =============================================
+        // HOW TO UPDATE BLOG POSTS:
+        // =============================================
+        /*
+        To update your blog posts, simply modify the 'blogPosts' array above.
+        
+        ADD A NEW POST:
+        Add a new object to the blogPosts array with this structure:
+        {
+            id: 7, // Next number in sequence
+            title: "Your Post Title",
+            excerpt: "Brief description of your post",
+            category: "residential", // or "commercial", "finance", etc.
+            image: "https://your-image-url.jpg",
+            date: "2024-03-20", // Use YYYY-MM-DD format
+            readTime: "5 min read",
+            featured: false, // Set to true if you want this as featured post
+            content: "Full article content here..."
+        }
+
+        UPDATE AN EXISTING POST:
+        Find the post by its id and update any properties you want to change.
+
+        REMOVE A POST:
+        Simply delete that object from the blogPosts array.
+
+        CHANGE FEATURED POST:
+        Set 'featured: true' for the post you want to feature, and set others to false.
+        */
+    </script>
+</body>
+</html>
